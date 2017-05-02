@@ -34,9 +34,12 @@ var Dispatcher = (function(){
   };
 
   Dispatcher.init = function(app) {
-    $(document).on("ready page:load", function(){
+    var initFn = function(){
       Dispatcher.run(app, $("body").data("route"));
-    });
+    }
+
+    $(initFn);
+    $(document).on("page:load", initFn);
   };
 
   Dispatcher.run = function(app, route) {
